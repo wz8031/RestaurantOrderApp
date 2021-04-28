@@ -3,11 +3,11 @@ import { Text, View, Image, Pressable, } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import Menuitem from '../menuitem'
 import { ScrollView } from 'react-native-gesture-handler';
-// import RNPickerSelect from 'react-native-picker-select';
 
 const Home = ({ navigation }) => {
     const [selectedLocation, setSeletedLocation] = useState();
     return (
+        
         <ScrollView>
 
             <View>
