@@ -25,29 +25,12 @@ const itemDetails = () =>{
         <View>
             <ScrollView>
                 <View style={styles.container}>
-                    <View style={styles.backicon}>
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.goback(null)}
-                        >
-                            <Image
-                                source={require('../../assets/favicon.png')}
-                            />
-                        </TouchableOpacity>
-
-                    </View>
                     <View style={styles.header}>
+                        
                         <Text>this is details</Text>
 
                     </View>
-                    <View style={styles.add}>
-                        <TouchableOpacity
-                        >
-                            <Image
-                                source={require('../../assets/favicon.png')}
-                            />
-                        </TouchableOpacity>
-
-                    </View>
+                  
                 </View>
                 <View style={styles.product}>
                     <Image source={require('../../assets/adaptive-icon.png')}

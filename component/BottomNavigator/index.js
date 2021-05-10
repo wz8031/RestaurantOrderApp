@@ -5,8 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 import HomeNavigator from '../Home/HomeNavigation';
 import Header from '../Cart';
 import OrderNavigator from '../Order/OrderNavigation';
-import TabViewExample from '../Scan';
 import FavoriteNavigator from '../Favorite/FavoriteNavigation'
+import ScanNavigator from '../Scan/ScanNavigation'
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -26,7 +26,7 @@ const BottomNavigator = ()=>{
             <Ionicons name="hourglass-sharp" color={color} size={26} /> ),
         }}/>
 
-        <Tab.Screen name="Scan" component={TabViewExample} options={{
+        <Tab.Screen name="Scan" component={ScanNavigator} options={{
           tabBarLabel: 'Scan',
           tabBarIcon: ({ color }) => (
             <Ionicons name="scan-sharp" color={color} size={26} /> ),

@@ -1,14 +1,14 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import myFavorite from './index';
+import TabViewExample from './index';
 
 
 const Stack = createStackNavigator();
 
-const FavoriteNavigator = ()=>{
+const ScanNavigator = ()=>{
     return(
         
-            <Stack.Navigator initialRouteName='Favorite' headeShown='false' screenOptions={{
+            <Stack.Navigator screenOptions={{
                 headerStyle: {
                   backgroundColor: "#9AC4F8",
                 },
@@ -16,11 +16,11 @@ const FavoriteNavigator = ()=>{
                 headerBackTitle: "Back",
                 headerTitleAlign:'center'
               }}>
-                <Stack.Screen name='Favorite' component={myFavorite} options={{title:'My Favorite', headerTitleAlign:'center'}}/>
+                <Stack.Screen name='Scan' component={TabViewExample} options={{title:'Scan Me!!', headerTitleAlign:'center'}}/>
 
             </Stack.Navigator>
     
     )
 }
 
-export default FavoriteNavigator;
+export default ScanNavigator;

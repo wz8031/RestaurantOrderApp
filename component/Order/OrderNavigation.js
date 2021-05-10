@@ -8,7 +8,14 @@ const Stack = createStackNavigator();
 const OrderNavigator = ()=>{
     return(
         
-            <Stack.Navigator initialRouteName='Order' headeShown='false'>
+            <Stack.Navigator initialRouteName='Order' headeShown='false' screenOptions={{
+                headerStyle: {
+                  backgroundColor: "#9AC4F8",
+                },
+                headerTintColor: "white",
+                headerBackTitle: "Back",
+                headerTitleAlign:'center'
+              }}>
                 <Stack.Screen name='Order' component={Order} options={{title:'Your orders', headerTitleAlign:'center'}}/>
 
             </Stack.Navigator>
