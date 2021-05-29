@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'react-native-gesture-handler';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import HomeNavigator from '../Home/HomeNavigation';
-import Header from '../Cart';
 import OrderNavigator from '../Order/OrderNavigation';
 import FavoriteNavigator from '../Favorite/FavoriteNavigation'
 import ScanNavigator from '../Scan/ScanNavigation'
+import CartNavigator from '../Cart/CartNavigation';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -38,7 +38,7 @@ const BottomNavigator = ()=>{
             <Ionicons name="heart-sharp" color={color} size={26} /> ),
         }}/>
 
-        <Tab.Screen name="Cart" component={Header} options={{
+        <Tab.Screen name="Cart" component={CartNavigator} options={{
           tabBarLabel: 'Cart',
           tabBarIcon: ({ color }) => (
             <Ionicons name="cart-sharp" color={color} size={26}/>),

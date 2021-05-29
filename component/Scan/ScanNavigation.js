@@ -13,7 +13,6 @@ const ScanNavigator = ()=>{
                   backgroundColor: "#9AC4F8",
                 },
                 headerTintColor: "white",
-                headerBackTitle: "Back",
                 headerTitleAlign:'center'
               }}>
                 <Stack.Screen name='Scan' component={TabViewExample} options={{title:'Scan Me!!', headerTitleAlign:'center'}}/>

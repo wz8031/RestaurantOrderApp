@@ -1,17 +1,19 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions, StatusBar  } from 'react-native';
+import { View, StyleSheet, Dimensions} from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 
 
 const FirstRoute = () => (
-    <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />
+    <View style={[styles.scene, { backgroundColor: '#ff4081' }]}>
+    </View>
+  
   );
   
   const SecondRoute = () => (
     <View style={[styles.scene, { backgroundColor: '#673ab7' }]} />
   );
   
-  const initialLayout = { width: Dimensions.get('window').width };
+  const initialLayout = { width: Dimensions.get('window').width, heigh:Dimensions.get('window').height };
   
   const renderScene = SceneMap({
     first: FirstRoute,
@@ -31,15 +33,11 @@ const FirstRoute = () => (
         renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={initialLayout}
-        style={styles.container}
       />
     );
   }
   
   const styles = StyleSheet.create({
-    container: {
-      marginTop: StatusBar.currentHeight,
-    },
     scene: {
       flex: 1,
     },

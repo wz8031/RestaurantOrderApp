@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, Image, Pressable, } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import Menuitem from '../menuitem'
+import Itemlist from '../menuitem/itemlist'
 import { ScrollView } from 'react-native-gesture-handler';
 
 const Home = ({ navigation }) => {
@@ -36,7 +36,7 @@ const Home = ({ navigation }) => {
                 navigation.navigate('itemDetails', { name: 'itemDetails' })
 
             }>
-                <Menuitem />
+                <Itemlist />
             </Pressable>
 
         </ScrollView>

@@ -49,7 +49,7 @@ const HomeNavigator = ()=>{
         // <DrawerContentScrollView>
         //create a Drawer Navigator and pass in the HomeStackNavigator we just created
           <Drawer.Navigator drawerContent={props => <DrawerContent{...props}/>}>
-              <Drawer.Screen name='Hodme' component={HomeStackScreen} />
+              <Drawer.Screen name='Home' component={HomeStackScreen} />
           </Drawer.Navigator>
         //   </DrawerContentScrollView>
     )
