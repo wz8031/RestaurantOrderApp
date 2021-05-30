@@ -20,6 +20,7 @@ const Itemlist = ({meneitems}) =>{
               return(  <Text>NO item found</Text>)
             }}
          />
+         
          </SafeAreaView>
        
     )
