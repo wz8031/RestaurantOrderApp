@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import { Text, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import {CartContext} from '../Cart/CartContext'
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -10,7 +9,7 @@ const Cart = () => {
   return (
     <ScrollView sty>
     <View>
-        <Text>item in cart : 0</Text>
+        <Text>item in cart : {cart.length}</Text>
         <Text>Total Price : 0</Text>
 
     </View>
