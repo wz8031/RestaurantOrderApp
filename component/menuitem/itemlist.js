@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text,SafeAreaView, SectionList} from 'react-native';
+import { Text,ScrollView, SectionList} from 'react-native';
 import Menuitem from './index'
 
 const Itemlist = ({meneitems}) =>{
   
     return(  
-        <SafeAreaView>
+      
         <SectionList
             sections={meneitems}
             keyExtractor={(item) => item.id}
@@ -21,7 +21,7 @@ const Itemlist = ({meneitems}) =>{
             }}
          />
          
-         </SafeAreaView>
+        
        
     )
 
