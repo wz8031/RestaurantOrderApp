@@ -5,12 +5,14 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 const Cart = () => {
-  const [cart, setcart]= useContext(CartContext)
+  const {cart,total}= useContext(CartContext)
+  // const totalPrce = 
+  
   return (
     <ScrollView sty>
     <View>
         <Text>item in cart : {cart.length}</Text>
-        <Text>Total Price : 0</Text>
+        <Text>Total Price : {total}</Text>
 
     </View>
     </ScrollView>

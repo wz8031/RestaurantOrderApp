@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Text, View, Image, Pressable, } from 'react-native';
+import { Text, View, Image, Pressable,SafeAreaView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import Itemlist from '../menuitem/itemlist'
-import { ScrollView } from 'react-native-gesture-handler';
 const database =[
     {
         title:'Appetizers',
@@ -30,7 +29,7 @@ const Home = ({ navigation }) => {
     const [selectedLocation, setSeletedLocation] = useState();
     return (
         
-        <ScrollView>
+        <SafeAreaView>
 
             <View>
 
@@ -54,14 +53,14 @@ const Home = ({ navigation }) => {
             </View>
 
 
-            <Pressable onPress={() =>
+            {/* <Pressable onPress={() =>
                 navigation.navigate('itemDetails', { name: 'itemDetails' })
 
-            }>
+            }> */}
                 <Itemlist meneitems={database} />
-            </Pressable>
+            {/* </Pressable> */}
 
-        </ScrollView>
+        </SafeAreaView>
     );
 
 };
