@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import { Text, View } from 'react-native';
-import {CartContext} from '../Cart/CartContext'
+import {CartContext} from '../Context/CartContext'
 import { ScrollView } from 'react-native-gesture-handler';
 
 

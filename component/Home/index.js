@@ -6,20 +6,20 @@ const database =[
     {
         title:'Appetizers',
         data:[
-            { name: 'spring roll(4 pic)', price: 4.99, id: 1 },
-            { name: 'Edemame(4 pic)', price: 5.99, id: 2 },
+            { image: require('../../assets/springroll.png'), name: 'spring roll(4 pic)', price: 4.99, id: 1 },
+            { image: require('../../assets/edamame-thumb.png'), name: 'Edemame(4 pic)', price: 5.99, id: 2 },
         ]
     },
     {
         title:'Sushi',
         data:[
-            {name:'Gyoza(4 pic)', price: 4.99, id:3}
+            {image: require('../../assets/Gyoza.png'), name:'Gyoza(4 pic)', price: 4.99, id:3}
         ]
     },
     {
         title:'Rice',
         data:[
-            {name:'haha(4 pic)', price: 4.99, id:4}
+            {image: require('../../assets/hahaS.png'), name:'haha(4 pic)', price: 4.99, id:4}
         ]
     },
 
@@ -57,7 +57,7 @@ const Home = ({ navigation }) => {
                 navigation.navigate('itemDetails', { name: 'itemDetails' })
 
             }> */}
-                <Itemlist meneitems={database} />
+                <Itemlist navigation={navigation} meneitems={database} />
             {/* </Pressable> */}
 
         </SafeAreaView>

@@ -1,23 +1,30 @@
-import React,{useState} from 'react';
+import React,{useState, useContext} from 'react';
 import { Text, View, Image, TextInput} from 'react-native';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import styles from './style';
+import {CartContext} from '../Context/CartContext'
 
 
-const itemDetails = () =>{
+
+const itemDetails = ({navigation,route}) =>{
+    const {name} = route.params;
+    
+
+    const {addItems} = useContext(CartContext);
 
     const [value, onChangeText] = React.useState('');
-    const[price, setprice] = useState(7.99)
+    const[price, setprice] = useState(route.params.price)
     const [count, setcount] = useState(1);
+
     const add = ()=>{
         setcount(prevState => prevState + 1);
-        setprice(prevState=>prevState+price)
+        setprice(prevState=>prevState+route.params.price)
     }
 
     const minus= ()=>{
         if(count>0){
             setcount(prevState => prevState - 1);
-            setprice(prevState=>prevState-7.99)
+            setprice(prevState=>prevState-route.params.price)
         }
 
     }
@@ -33,7 +40,7 @@ const itemDetails = () =>{
                   
                 </View>
                 <View style={styles.product}>
-                    <Image source={require('../../assets/adaptive-icon.png')}
+                    <Image source={route.params.image}
                         style={{
                             height: 300,
                             width: 300,
@@ -66,7 +73,7 @@ const itemDetails = () =>{
                     <Text style={{ fontSize: 30, fontWeight: 'bold' }}>Sushi Island</Text>
 
                     <View>
-                        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'grey' }}>Sipcy Tuna Roll</Text>
+                        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'grey' }}>{name}</Text>
                         <Text style={{ fontSize: 20, fontWeight: 'bold', alignSelf: 'flex-end' }}>{price}</Text>
                     </View>
 
@@ -80,7 +87,7 @@ const itemDetails = () =>{
                         onChangeText={text => onChangeText(text)}
                         value={value}
                     />
-                    <TouchableOpacity onPress={() => alert('Hello, world!')} style={styles.button}>
+                    <TouchableOpacity onPress={() => addItems(name,price)} style={styles.button}>
                         <Text style={styles.buttonText}>Add to chart</Text>
                     </TouchableOpacity>
                 </View>

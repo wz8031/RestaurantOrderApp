@@ -2,7 +2,7 @@ import React from 'react';
 import { Text,ScrollView, SectionList} from 'react-native';
 import Menuitem from './index'
 
-const Itemlist = ({meneitems}) =>{
+const Itemlist = ({meneitems, navigation}) =>{
   
     return(  
       
@@ -11,7 +11,7 @@ const Itemlist = ({meneitems}) =>{
             keyExtractor={(item) => item.id}
             renderItem={(({item})=>{
             return(
-                <Menuitem name={item.name} price={item.price} id={item.id}/>)
+                <Menuitem navigation={navigation} image={item.image} name={item.name} price={item.price} id={item.id}/>)
             })}
             renderSectionHeader={({section:{title}})=>(
                 <Text>{title}</Text>
