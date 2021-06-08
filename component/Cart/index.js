@@ -1,39 +1,44 @@
-import React, {useContext} from 'react';
-import { Text, View } from 'react-native';
-import {CartContext} from '../Context/CartContext'
-import { ScrollView } from 'react-native-gesture-handler';
-
+import React, { useContext } from 'react';
+import { Text, View,TouchableOpacity} from 'react-native';
+import { CartContext } from '../Context/CartContext'
+import styles from './style';
+import CartItem from './cartitem'
 
 const Cart = () => {
-  const {cart,total}= useContext(CartContext)
+  const { cart, total } = useContext(CartContext);
   // const totalPrce = 
-  
-  return (
-    <ScrollView sty>
-    <View>
-        <Text>item in cart : {cart.length}</Text>
-        <Text>Total Price : {total}</Text>
 
+
+
+  return (
+    <View>
+      <CartItem cartData={cart}
+        footerComponent={() => {
+          return (
+            <View style={styles.text}>
+              {/* <Text>item in cart : {cart.length}</Text> */}
+              <Text>Total Price : {total}</Text>
+            </View>
+          )}}
+      />
+      <View>
+        <TouchableOpacity onPress={() => alert('hah')} style={styles.button}>
+          <Text style={styles.buttonText}>Check Out</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* const footerComponent=()=>{
+        <View style={styles.text}>
+        <Text>item in cart : {cart.length}</Text>
+        <Text>Total Price : {total}</Text>} */}
+        
+
+    
     </View>
-    </ScrollView>
+   
     
     
   );
-};
-
-const styles = {
-  headerStyle: {
-    flex: 0.2,
-    elevation: 2,
-    marginTop: 0,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderBottomWidth: 1,
-    borderColor: '#e2e2e2'
-  }
 };
 
 export default Cart;

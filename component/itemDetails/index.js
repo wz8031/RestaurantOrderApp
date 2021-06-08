@@ -7,7 +7,7 @@ import {CartContext} from '../Context/CartContext'
 
 
 const itemDetails = ({navigation,route}) =>{
-    const {name} = route.params;
+    const {name,id} = route.params;
     
 
     const {addItems} = useContext(CartContext);
@@ -87,7 +87,7 @@ const itemDetails = ({navigation,route}) =>{
                         onChangeText={text => onChangeText(text)}
                         value={value}
                     />
-                    <TouchableOpacity onPress={() => addItems(name,price)} style={styles.button}>
+                    <TouchableOpacity onPress={() => addItems(name,price,id)} style={styles.button}>
                         <Text style={styles.buttonText}>Add to chart</Text>
                     </TouchableOpacity>
                 </View>

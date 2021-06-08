@@ -34,10 +34,10 @@ export const CartProvider = (props) =>{
     // const [cart, setcart] = useState([]); //hooks
 
 
-    const addItems = (name,price) => {
-        const item={name:name, price:price};
-        // setcart(cart=>[...cart, item]);
-        dispatch({type:'ADD_ITEM', payload:item})
+    const addItems = (name,price,id) => {
+        const item={name:name, price:price, id:id};
+        // setcart(cart=>[...cart, item]);                      
+        dispatch({type:'ADD_ITEM', payload:item})                     
      };
 
      const deleteItems = (id) =>{
