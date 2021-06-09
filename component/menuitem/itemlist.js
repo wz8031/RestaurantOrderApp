@@ -4,15 +4,19 @@ import styles from '../menuitem/style';
 import Menuitem from './index'
 
 const Itemlist = ({meneitems, navigation}) =>{
-  
     return(  
       
         <SectionList
+            style={{padding:5, flex:1}}
+            contentContainerStyle={{paddingBottom:5}}
             sections={meneitems}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => String(item.id)}
             renderItem={(({item})=>{
             return(
-                <Menuitem descrition={item.descrition} navigation={navigation} image={item.image} name={item.name} price={item.price} id={item.id}/>)
+                <Menuitem 
+                navigation={navigation}
+                item={item}
+                />)
             })}
             renderSectionHeader={({section: {title}})=>(
 

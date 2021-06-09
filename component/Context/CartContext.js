@@ -3,28 +3,30 @@ import React, {useState, useReducer} from 'react';
 export const CartContext = React.createContext();
 
 
-const getTotalPriceFromCart =(cart)=>{
-    let total = 0;
-    for (let i =0; i <cart.length; i++){
-        total = total+cart[i].price
-    }
-    return total;
-}
-
-
 export const CartProvider = (props) =>{
 
     const itemReducer = (state,action)=>{
         switch(action.type){
             case 'ADD_ITEM':
+                const nextCart = [...state.cart];
+                const existingIndex = nextCart.findIndex((item)=>item.id===action.payload.id);
+                if(existingIndex>=0){
+                    const newQuantity = Number(nextCart[existingIndex].quantity + action.payload.quantity);
+                    nextCart[existingIndex] = {
+                        ...nextCart[existingIndex],
+                        quantity: newQuantity,
+                      };
+                    } else {
+                      nextCart.push(action.payload);
+                    }
+                console.log(JSON.stringify(nextCart, null, 2))
                 return {
-                    cart:[...state.cart, action.payload],
-                    totalAmount:getTotalPriceFromCart([...state.cart, action.payload])
+                    // cart:[...state.cart, action.payload],
+                    cart: nextCart,
                 }
             case 'DELETE_ITEM':
                  return {
                     cart:state.cart.filter(cart=>cart.id !== id),
-                    totalAmount:getTotalPriceFromCart([...state.cart, action.payload])
                 }
             
         }
@@ -34,10 +36,8 @@ export const CartProvider = (props) =>{
     // const [cart, setcart] = useState([]); //hooks
 
 
-    const addItems = (name,price,id) => {
-        const item={name:name, price:price, id:id};
-        // setcart(cart=>[...cart, item]);                      
-        dispatch({type:'ADD_ITEM', payload:item})                     
+    const addItems = ({item, quantity}) => { 
+        dispatch({type:'ADD_ITEM', payload:{...item, quantity}})                     
      };
 
      const deleteItems = (id) =>{
@@ -45,6 +45,21 @@ export const CartProvider = (props) =>{
      };
 
 
+    const getTotalPriceFromCart =()=>{
+        let total = 0;
+        for (let i =0; i <state.cart.length; i++){
+            total = total+(state.cart[i].price * state.cart[i].quantity)
+        }
+        return total;
+    }
+
+    const getTotalQuantity =()=>{
+        let total = 0;
+        for (let i =0; i <state.cart.length; i++){
+            total = total+state.cart[i].quantity
+        }
+        return total;
+    }
      /**
       * [cart, addItems, deleteItems] = useContext(CartConext);
       * {addItems} = useContext(CartConext);
@@ -54,7 +69,8 @@ export const CartProvider = (props) =>{
     return(
         <CartContext.Provider value={{
             cart:state.cart, 
-            total:state.totalAmount, 
+            total:getTotalPriceFromCart,
+            totalQuantity:getTotalQuantity,
             addItems,
             deleteItems}}>   
             {props.children}

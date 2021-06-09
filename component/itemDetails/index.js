@@ -7,24 +7,25 @@ import {CartContext} from '../Context/CartContext'
 
 
 const itemDetails = ({navigation,route}) =>{
-    const {name,id} = route.params;
-    
-
+    const {item} = route.params;
+    const {descrition, name, price, id, image} =item;
     const {addItems} = useContext(CartContext);
 
     const [value, onChangeText] = React.useState('');
-    const[price, setprice] = useState(route.params.price)
-    const [count, setcount] = useState(1);
+    const [itemQuantity, setItemQuantityCount] = useState(1);
+    const[total, setTotalPrice] = useState(price * itemQuantity)
 
     const add = ()=>{
-        setcount(prevState => prevState + 1);
-        setprice(prevState=>prevState+route.params.price)
+        const newQuantity = itemQuantity + 1
+        setItemQuantityCount(newQuantity);
+        setTotalPrice(price * newQuantity)
     }
 
     const minus= ()=>{
-        if(count>0){
-            setcount(prevState => prevState - 1);
-            setprice(prevState=>prevState-route.params.price)
+        if(itemQuantity>0){
+            const newQuantity = itemQuantity - 1
+            setItemQuantityCount(newQuantity);
+            setTotalPrice(price * newQuantity)
         }
 
     }
@@ -34,13 +35,13 @@ const itemDetails = ({navigation,route}) =>{
                 <View style={styles.container}>
                     <View style={styles.header}>
                         
-                        <Text>this is details</Text>
+                        <Text>{descrition}</Text>
 
                     </View>
                   
                 </View>
                 <View style={styles.product}>
-                    <Image source={route.params.image}
+                    <Image source={image}
                         style={{
                             height: 300,
                             width: 300,
@@ -57,7 +58,7 @@ const itemDetails = ({navigation,route}) =>{
                                 </Text>
                     </TouchableOpacity>
 
-                    <Text style={{ paddingHorizontal: 20 }}>{count}</Text>
+                    <Text style={{ paddingHorizontal: 20 }}>{itemQuantity}</Text>
 
                     <TouchableOpacity
                         onPress={minus}
@@ -73,9 +74,12 @@ const itemDetails = ({navigation,route}) =>{
                     <Text style={{ fontSize: 30, fontWeight: 'bold' }}>Sushi Island</Text>
 
                     <View>
-                        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'grey' }}>{name}</Text>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold', alignSelf: 'flex-end' }}>{price}</Text>
+                        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'grey' }}>Name:{name}</Text>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', alignSelf: 'flex-end' }}>Unit Price:{price}</Text>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', alignSelf: 'flex-end' }}>Total:{total}</Text>
                     </View>
+                
+
 
                 </View>
 
@@ -87,7 +91,7 @@ const itemDetails = ({navigation,route}) =>{
                         onChangeText={text => onChangeText(text)}
                         value={value}
                     />
-                    <TouchableOpacity onPress={() => addItems(name,price,id)} style={styles.button}>
+                    <TouchableOpacity onPress={() => addItems({item, quantity:itemQuantity})} style={styles.button}>
                         <Text style={styles.buttonText}>Add to chart</Text>
                     </TouchableOpacity>
                 </View>

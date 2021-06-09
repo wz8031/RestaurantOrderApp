@@ -17,7 +17,7 @@ const Cart = () => {
           return (
             <View style={styles.text}>
               {/* <Text>item in cart : {cart.length}</Text> */}
-              <Text>Total Price : {total}</Text>
+              <Text>Total Price : {total()}</Text>
             </View>
           )}}
       />

@@ -15,14 +15,16 @@ const database =[
                 name: 'spring roll(4 pic)',
                 price: 4.99,
                 id: 1,
-                descrition:'warp with vegetable'
+                descrition:'warp with vegetable',
+                
             },
             {
                 image: require('../../assets/edamame-thumb.png'),
                 name: 'Edemame(4 pic)',
                 price: 5.99,
                 id: 2,
-                descrition:'boilded green beans'
+                descrition:'boilded green beans',
+                
             },
         ]
     },
@@ -34,11 +36,12 @@ const database =[
             ,
         data: [
             {
-                image: require('../../assets/Gyoza.png'),
-                name: 'Gyoza(4 pic)',
+                image: require('../../assets/hahaS.png'),
+                name: 'haha(4 pic)',
                 price: 4.99,
-                id: 3,
-                descrition:'deep fry dumplingb'
+                id: 4,
+                descrition:'smiling face with tears',
+                
             }
         ]
     },
@@ -50,11 +53,12 @@ const database =[
             ,
         data: [
             {
-                image: require('../../assets/hahaS.png'),
-                name: 'haha(4 pic)',
+                image: require('../../assets/Gyoza.png'),
+                name: 'Gyoza(4 pic)',
                 price: 4.99,
-                id: 4,
-                descrition:'smiling face with tears'
+                id: 3,
+                descrition:'deep fry dumplingb',
+               
             }
         ]
     },
@@ -64,11 +68,8 @@ const database =[
 const Home = ({ navigation }) => {
     const [selectedLocation, setSeletedLocation] = useState();
     return (
-        
-        <SafeAreaView>
-
-            <View>
-
+        <View style={{flex:1}}>
+            <View style={{flex:1, maxHeight:50}}>
                 <Picker
                     selectedValue={selectedLocation}
                     onValueChange={(itemValue, itemIndex) =>
@@ -85,18 +86,9 @@ const Home = ({ navigation }) => {
                         value="uptown"
                     />
                 </Picker>
-
             </View>
-
-
-            {/* <Pressable onPress={() =>
-                navigation.navigate('itemDetails', { name: 'itemDetails' })
-
-            }> */}
                 <Itemlist navigation={navigation} meneitems={database} />
-            {/* </Pressable> */}
-
-        </SafeAreaView>
+        </View>
     );
 
 };

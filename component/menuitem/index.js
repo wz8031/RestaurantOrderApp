@@ -5,14 +5,13 @@ import {CartContext} from '../Context/CartContext'
 import styles from './style';
 
 
-const Menuitem = ({descrition, name, price, id, image, navigation})=>{
-
-    // const {addItems} =useContext(CartContext);
-   
+const Menuitem = ({item, navigation})=>{
+    const {descrition, name, price, id, image} =item;
+    
     return(
 
         <TouchableOpacity onPress={()=>{
-            navigation.navigate('itemDetails',{name,price,image,id})
+            navigation.navigate('itemDetails',{item})
         }}>
         <View key={id} style={styles.container} >
           

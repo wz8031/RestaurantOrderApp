@@ -1,15 +1,16 @@
 import React,{useContext}from 'react';
-import {FlatList, Text,View} from 'react-native'
+import {FlatList, Text, View} from 'react-native'
 import CartConext from '../Context/CartContext'
 import styles from './style'
 
 
 
 const CartItem = ({cartData,footerComponent}) => {
+  console.log(cartData)
     return(
     <FlatList
     data={cartData}
-    renderItem={(({ item }) => {
+    renderItem={({ item }) => {
       return (
         // <TouchableOpacity onPress={() => {
           
@@ -18,14 +19,15 @@ const CartItem = ({cartData,footerComponent}) => {
 
             <View style={styles.itemText}>
               <Text >{item.name}</Text>
-              <Text>Quantity:1</Text>
+              <Text>{item.quantity}</Text>
               <Text >{item.price}</Text>
             </View>
 
           </View>
         // </TouchableOpacity>
-    )})}
-    keyExtractor={item => String(item.id)}
+    )}}
+    
+    keyExtractor={(item) => `${item.id}`}
     ListEmptyComponent={()=>{
         return(  <Text>NO item found</Text>)
       }}

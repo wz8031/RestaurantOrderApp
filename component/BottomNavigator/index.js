@@ -7,10 +7,12 @@ import OrderNavigator from '../Order/OrderNavigation';
 import FavoriteNavigator from '../Favorite/FavoriteNavigation'
 import ScanNavigator from '../Scan/ScanNavigation'
 import CartNavigator from '../Cart/CartNavigation';
-
+import {CartContext} from '../Context/CartContext';
 const Tab = createMaterialBottomTabNavigator();
 
 const BottomNavigator = ()=>{
+  const { totalQuantity } = useContext(CartContext);
+
     return(
         <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeNavigator} options={{
@@ -40,6 +42,7 @@ const BottomNavigator = ()=>{
 
         <Tab.Screen name="Cart" component={CartNavigator} options={{
           tabBarLabel: 'Cart',
+          ...(totalQuantity()>0) && {tabBarBadge: totalQuantity()},
           tabBarIcon: ({ color }) => (
             <Ionicons name="cart-sharp" color={color} size={26}/>),
           }}/>
