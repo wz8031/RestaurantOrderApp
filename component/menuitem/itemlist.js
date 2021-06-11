@@ -1,20 +1,30 @@
 import React from 'react';
-import { Text,ScrollView, SectionList} from 'react-native';
+import { Text,ScrollView, SectionList, ImageBackground} from 'react-native';
+import styles from '../menuitem/style';
 import Menuitem from './index'
 
-const Itemlist = ({meneitems}) =>{
-  
+const Itemlist = ({meneitems, navigation}) =>{
     return(  
       
         <SectionList
+            style={{padding:5, flex:1}}
+            contentContainerStyle={{paddingBottom:5}}
             sections={meneitems}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => String(item.id)}
             renderItem={(({item})=>{
             return(
-                <Menuitem name={item.name} price={item.price} id={item.id}/>)
+                <Menuitem 
+                navigation={navigation}
+                item={item}
+                />)
             })}
-            renderSectionHeader={({section:{title}})=>(
-                <Text>{title}</Text>
+            renderSectionHeader={({section: {title}})=>(
+
+                <ImageBackground source={title.image} style={styles.titleimage} >
+                <Text style={styles.titles}>{title.app}</Text>
+                 </ImageBackground>
+                
+             
             )}
             ListEmptyComponent={()=>{
               return(  <Text>NO item found</Text>)
