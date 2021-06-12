@@ -5,14 +5,13 @@ import styles from './style';
 import CartItem from './cartitem'
 
 const Cart = () => {
+  // const [modalOpen,setModalOpen] = useState(false);
   const { cart, total } = useContext(CartContext);
-  // const totalPrce = 
-  const [modalOpen,setModalOpen] = useState(false);
 
   return (
 
     <View>
-      <Modal visible={modalOpen} animationType='slide' transparent={true}>
+      {/* <Modal visible={modalOpen} animationType='slide' transparent={true}>
         <View style={styles.modalContent}>
           <View style={styles.wraper}>
           <Text>haha</Text>
@@ -25,7 +24,7 @@ const Cart = () => {
           </TouchableOpacity>
           </View>
         </View>
-      </Modal>
+      </Modal> */}
       <CartItem cartData={cart}
         footerComponent={() => {
           return (
@@ -35,7 +34,10 @@ const Cart = () => {
           )}}
       />
       <View>
-        <TouchableOpacity  onpress={setModalOpen(true)} style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress = {()=>{
+          // setModalOpen(true)
+          alert('ha')
+        }}>
           <Text style={styles.buttonText}>Check Out</Text>
         </TouchableOpacity>
       </View>
