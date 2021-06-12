@@ -29,6 +29,25 @@ button: {
     fontSize: 20,
     color: '#fff',
   }, 
+
+  modalContent:{
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+
+  },
+
+  wraper:{
+    position: 'absolute',
+    bottom:0,
+    alignItems: 'center',
+    backgroundColor: "#fff",
+    width: '100%',
+    height: 400,
+    
+  }
  
 });
 

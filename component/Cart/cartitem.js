@@ -1,5 +1,5 @@
 import React,{useContext}from 'react';
-import {FlatList, Text, View} from 'react-native'
+import {FlatList, Text, View, TouchableOpacity} from 'react-native'
 import CartConext from '../Context/CartContext'
 import styles from './style'
 
@@ -12,9 +12,9 @@ const CartItem = ({cartData,footerComponent}) => {
     data={cartData}
     renderItem={({ item }) => {
       return (
-        // <TouchableOpacity onPress={() => {
-          
-        // }}>
+        <TouchableOpacity onPress={() => {
+          alert('gaga')
+        }}>
           <View key={item.id}  >
 
             <View style={styles.itemText}>
@@ -24,7 +24,7 @@ const CartItem = ({cartData,footerComponent}) => {
             </View>
 
           </View>
-        // </TouchableOpacity>
+        </TouchableOpacity>
     )}}
     
     keyExtractor={(item) => `${item.id}`}
