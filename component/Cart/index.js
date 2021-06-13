@@ -19,7 +19,12 @@ const Cart = () => {
     })
 
   }
-  const onMinuPress = () => { console.log('minus') }
+  const onMinuPress = () => {
+    setCartModalItem({
+      ...viewedCartItem,
+      quantity: viewedCartItem.quantity - 1
+    })
+  }
   return (
     <View>
       <Modal visible={isVisible} animationType='slide' transparent={true}>

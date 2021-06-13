@@ -61,7 +61,7 @@ export const CartProvider = (props) => {
         return total;
     }
 
-    updateCartWithItem = (item) => {
+    const updateCartWithItem = (item) => {
         dispatch({ type: 'REPLACE_ITEM', payload: item })
     }
 

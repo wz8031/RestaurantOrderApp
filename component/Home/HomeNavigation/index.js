@@ -34,10 +34,12 @@ const HomeStackScreen = ({navigation}) =>{
             )
         }} />
         <HomeStack.Screen name='itemDetails' component={itemDetails}
-            options={({route, navigation})=>({
+            options={()=>({
                 headerRight:()=>(
                    
-                  <Ionicons.Button onPress={() => console.log(route.params.item)} name='heart-outline' size={20}
+                  <Ionicons.Button 
+                  name='heart-outline' 
+                  size={20}
                   backgroundColor='#9AC4F8'
                 ></Ionicons.Button> 
                 

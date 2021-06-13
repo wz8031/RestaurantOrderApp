@@ -23,7 +23,8 @@ button: {
     width: Dimensions.get('window').width*0.5,
     alignItems:'center',
     alignSelf:'center',
-    marginTop:150
+    marginTop:100,
+    resizeMode:'contain'
   },
   buttonText: {
     fontSize: 20,

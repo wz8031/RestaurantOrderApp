@@ -4,6 +4,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import styles from './style';
 import { CartContext } from '../Context/CartContext'
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const itemDetails = ({ navigation, route }) => {
@@ -15,15 +16,23 @@ const itemDetails = ({ navigation, route }) => {
     const [itemQuantity, setItemQuantityCount] = useState(1);
     const [total, setTotalPrice] = useState(price * itemQuantity)
 
-    // useEffect(() => {
-    //     navigation.setOptions({
-    //         headerRight: () => (
-    //             <Ionicons.Button onPress={(props) => console.log(props)} name='heart-outline' size={20}
-    //                 backgroundColor='#9AC4F8'
-    //             ></Ionicons.Button>
-    //         )
-    //     })
-    // }, [])
+    useEffect(() => {
+        navigation.setOptions({
+            headerRight:()=>(
+
+                <Ionicons.Button 
+                clear text-center click="toggle()" 
+                onPress={() => asynData(item)} 
+                name='heart-outline'
+                // name={visible ? 'arrow-drop up-circle':'arrow-drop down-circle'}
+                size={20}
+                backgroundColor='#9AC4F8'
+              ></Ionicons.Button> 
+                
+              
+              )
+        })
+    }, [])
     const add = () => {
         const newQuantity = itemQuantity + 1
         setItemQuantityCount(newQuantity);
@@ -37,17 +46,44 @@ const itemDetails = ({ navigation, route }) => {
             setTotalPrice(price * newQuantity)
         }
     }
+
+    const asynData = async(item) => {
+        try{
+        // console.log(item)
+        const thisItem= await AsyncStorage.getItem(item.id.toString())
+        if(!thisItem){
+        // const jsonValue = JSON.stringify(item.id)
+        await AsyncStorage.setItem(item.id.toString(),item.name)
+        }else{
+            alert('already added')
+        }
+        // console.log(jsonValue)
+        } catch(err){
+            alert('error')
+        }
+    }
+
+    // const getAsynData = async()=>{
+    //     try {
+    //         // const keys=[]= await AsyncStorage.getAllKeys();
+    //         const jsonValue = await AsyncStorage.getItem(item.name);
+    //         const itemList=JSON.parse(jsonValue)
+    //         if(itemList!=null){
+    //             console.log(itemList.name)
+    //         }
+    //       } catch(e) {
+    //         alert('error')
+    //       }
+    //     }
+    // getAsynData();
     return (
-        <View>
+        <View> 
             <ScrollView>
                 <View style={styles.container}>
                     <View style={styles.header}>
 
                         <Text>{descrition}</Text>
-                        <Ionicons.Button onPress={(props) => console.log('ha')} name='heart-outline' size={20}
-                            backgroundColor='#9AC4F8'
-                        ></Ionicons.Button>
-
+                      
                     </View>
 
                 </View>
