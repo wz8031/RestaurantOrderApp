@@ -4,13 +4,14 @@ import Home from '../../Home'
 import itemDetails from '../../itemDetails';
 import {createDrawerNavigator, DrawerContentScrollView, DrawerItemList} from '@react-navigation/drawer'
 import { Ionicons } from '@expo/vector-icons';
-import { View } from 'react-native';
+import { View, TouchableOpacity} from 'react-native';
 import DrawerContent from './DrawerContent'
 
 const HomeStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const HomeStackScreen = ({navigation}) =>{
+
 
     return(
     <HomeStack.Navigator screenOptions={{
@@ -24,26 +25,30 @@ const HomeStackScreen = ({navigation}) =>{
         <HomeStack.Screen name='Sushi Island' component={Home} options={{
             //Adding a button to open the Drawer menu
             headerLeft:()=>(
+              
                 <Ionicons.Button name='menu-sharp' size={20}
                 backgroundColor='#9AC4F8' onPress={()=>
                     navigation.openDrawer()
                 }></Ionicons.Button>
+             
             )
         }} />
         <HomeStack.Screen name='itemDetails' component={itemDetails}
-            options={{
+            options={({route, navigation})=>({
                 headerRight:()=>(
-                  <Ionicons.Button name='heart-outline' size={20}
+                   
+                  <Ionicons.Button onPress={() => console.log(route.params.item)} name='heart-outline' size={20}
                   backgroundColor='#9AC4F8'
                 ></Ionicons.Button> 
+                
                 )
-            }}
+            })}
         
         />
     </HomeStack.Navigator>
     )
 }
-
+// https://stackoverflow.com/questions/46200454/react-native-dynamically-update-header-title-in-stack-navigator
 const HomeNavigator = ()=>{
     return(
         // <DrawerContentScrollView>
