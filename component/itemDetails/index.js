@@ -1,44 +1,55 @@
-import React,{useState, useContext} from 'react';
-import { Text, View, Image, TextInput} from 'react-native';
-import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+import React, { useState, useContext, useEffect } from 'react';
+import { Text, View, Image, TextInput } from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import styles from './style';
-import {CartContext} from '../Context/CartContext'
+import { CartContext } from '../Context/CartContext'
+import { Ionicons } from '@expo/vector-icons';
 
 
-
-const itemDetails = ({navigation,route}) =>{
-    const {item} = route.params;
-    const {descrition, name, price, id, image} =item;
-    const {addItems} = useContext(CartContext);
+const itemDetails = ({ navigation, route }) => {
+    const { item } = route.params;
+    const { descrition, name, price, id, image } = item;
+    const { addItems } = useContext(CartContext);
 
     const [value, onChangeText] = React.useState('');
     const [itemQuantity, setItemQuantityCount] = useState(1);
-    const[total, setTotalPrice] = useState(price * itemQuantity)
+    const [total, setTotalPrice] = useState(price * itemQuantity)
 
-    const add = ()=>{
+    // useEffect(() => {
+    //     navigation.setOptions({
+    //         headerRight: () => (
+    //             <Ionicons.Button onPress={(props) => console.log(props)} name='heart-outline' size={20}
+    //                 backgroundColor='#9AC4F8'
+    //             ></Ionicons.Button>
+    //         )
+    //     })
+    // }, [])
+    const add = () => {
         const newQuantity = itemQuantity + 1
         setItemQuantityCount(newQuantity);
         setTotalPrice(price * newQuantity)
     }
 
-    const minus= ()=>{
-        if(itemQuantity>0){
+    const minus = () => {
+        if (itemQuantity > 0) {
             const newQuantity = itemQuantity - 1
             setItemQuantityCount(newQuantity);
             setTotalPrice(price * newQuantity)
         }
-
     }
     return (
         <View>
             <ScrollView>
                 <View style={styles.container}>
                     <View style={styles.header}>
-                        
+
                         <Text>{descrition}</Text>
+                        <Ionicons.Button onPress={(props) => console.log('ha')} name='heart-outline' size={20}
+                            backgroundColor='#9AC4F8'
+                        ></Ionicons.Button>
 
                     </View>
-                  
+
                 </View>
                 <View style={styles.product}>
                     <Image source={image}
@@ -55,7 +66,7 @@ const itemDetails = ({navigation,route}) =>{
                     >
                         <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
                             +
-                                </Text>
+                        </Text>
                     </TouchableOpacity>
 
                     <Text style={{ paddingHorizontal: 20 }}>{itemQuantity}</Text>
@@ -65,7 +76,7 @@ const itemDetails = ({navigation,route}) =>{
                     >
                         <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
                             -
-                                </Text>
+                        </Text>
                     </TouchableOpacity>
 
                 </View>
@@ -78,7 +89,7 @@ const itemDetails = ({navigation,route}) =>{
                         <Text style={{ fontSize: 20, fontWeight: 'bold', alignSelf: 'flex-end' }}>Unit Price:{price}</Text>
                         <Text style={{ fontSize: 20, fontWeight: 'bold', alignSelf: 'flex-end' }}>Total:{total}</Text>
                     </View>
-                
+
 
 
                 </View>
@@ -91,7 +102,7 @@ const itemDetails = ({navigation,route}) =>{
                         onChangeText={text => onChangeText(text)}
                         value={value}
                     />
-                    <TouchableOpacity onPress={() => addItems({item, quantity:itemQuantity})} style={styles.button}>
+                    <TouchableOpacity onPress={() => addItems({ item, quantity: itemQuantity })} style={styles.button}>
                         <Text style={styles.buttonText}>Add to chart</Text>
                     </TouchableOpacity>
                 </View>

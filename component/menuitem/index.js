@@ -7,7 +7,7 @@ import styles from './style';
 
 const Menuitem = ({item, navigation})=>{
     const {descrition, name, price, id, image} =item;
-    
+
     return(
 
         <TouchableOpacity onPress={()=>{
