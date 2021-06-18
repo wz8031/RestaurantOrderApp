@@ -3,10 +3,12 @@ import { Text, View, TouchableOpacity, Modal } from 'react-native';
 import { CartContext } from '../Context/CartContext'
 import styles from './style';
 import CartItem from './cartitem'
+import { AntDesign } from '@expo/vector-icons'; 
+
 
 const Cart = () => {
   const [isVisible, setModalVisble] = useState(false);
-  const { cart, total, updateCartWithItem } = useContext(CartContext);
+  const { cart, total, updateCartWithItem,deleteItems} = useContext(CartContext);
   const [ viewedCartItem, setCartModalItem ] = useState({
     name: '',
     quantity: 0,
@@ -20,11 +22,14 @@ const Cart = () => {
 
   }
   const onMinuPress = () => {
+    if(viewedCartItem.quantity>1){
     setCartModalItem({
       ...viewedCartItem,
       quantity: viewedCartItem.quantity - 1
     })
   }
+  }
+
   return (
     <View>
       <Modal visible={isVisible} animationType='slide' transparent={true}>
@@ -53,6 +58,20 @@ const Cart = () => {
                 </Text>
               </TouchableOpacity>
             </View>
+
+            <TouchableOpacity
+              onPress={() => {
+                deleteItems(viewedCartItem)
+                setCartModalItem({
+                  name: '',
+                  quantity: 0,
+                  price: 0
+                });
+                setModalVisble(false)
+              }}>
+                 <AntDesign name="delete" size={24} color="black" />
+              </TouchableOpacity>
+
             <TouchableOpacity
               style={{ ...styles.button, ...styles.button }}
               onPress={() => {
@@ -91,7 +110,8 @@ const Cart = () => {
           <Text style={styles.buttonText}>Check Out</Text>
         </TouchableOpacity>
       </View>
-
+                                                                                                                                                                                   
+                                                                                                                                                                                   
       {/* const footerComponent=()=>{
         <View style={styles.text}>
         <Text>item in cart : {cart.length}</Text>

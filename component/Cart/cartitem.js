@@ -2,6 +2,7 @@ import React,{useContext,useState}from 'react';
 import {FlatList, Text, View, TouchableOpacity, Modal} from 'react-native'
 import CartConext from '../Context/CartContext'
 import styles from './style'
+// import { AntDesign } from '@expo/vector-icons'; 
 
 
 
@@ -27,6 +28,7 @@ const CartItem = ({cartData, onCartItemPress, footerComponent}) => {
         setItemQuantityCount(newQuantity);
         setTotalPrice(itemPrice * newQuantity)
     }}
+
     return(
     <FlatList
     data={cartData}
@@ -41,10 +43,12 @@ const CartItem = ({cartData, onCartItemPress, footerComponent}) => {
               <Text >{item.name}</Text>
               <Text>{item.quantity}</Text>
               <Text >{item.price}</Text>
+              {/* <AntDesign onPress={deleteItem()} name="delete" size={24} color="black" /> */}
             </View>
 
           </View>
-         </TouchableOpacity>
+         </TouchableOpacity> 
+         
          </View>
     )}}
     

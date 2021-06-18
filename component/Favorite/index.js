@@ -25,7 +25,7 @@ const myFavorite = ({ navigation }) => {
     const clearAll = async () => {
         try {
             await AsyncStorage.clear()
-            // setFavorKey([])
+            setFavorKey([])
         } catch (e) {
             // clear error
         }
@@ -35,7 +35,7 @@ const myFavorite = ({ navigation }) => {
 
     useEffect(() => {
         getAsynData();
-    },[]);
+    });
 
     return (
 

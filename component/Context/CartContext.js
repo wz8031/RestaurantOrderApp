@@ -50,6 +50,7 @@ export const CartProvider = (props) => {
 
     const deleteItems = (id) => {
         setcart(cart.filter(cart => cart.id !== id));
+        console.log('haha')
     };
 
 

@@ -21,7 +21,7 @@ const itemDetails = ({ navigation, route }) => {
             headerRight:()=>(
 
                 <Ionicons.Button 
-                clear text-center click="toggle()" 
+                // clear text-center click="toggle()" 
                 onPress={() => asynData(item)} 
                 name='heart-outline'
                 // name={visible ? 'arrow-drop up-circle':'arrow-drop down-circle'}

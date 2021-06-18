@@ -16,7 +16,7 @@ const OrderNavigator = ()=>{
                 headerBackTitle: "Back",
                 headerTitleAlign:'center'
               }}>
-                <Stack.Screen name='Order' component={Order} options={{title:'Your orders', headerTitleAlign:'center'}}/>
+                <Stack.Screen name='Order' component={Order} options={{title:'Order', headerTitleAlign:'center'}}/>
 
             </Stack.Navigator>
     
