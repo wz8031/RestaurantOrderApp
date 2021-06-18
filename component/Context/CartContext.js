@@ -50,6 +50,7 @@ export const CartProvider = (props) => {
 
     const deleteItems = (id) => {
         setcart(cart.filter(cart => cart.id !== id));
+        console.log('haha')
     };
 
 
@@ -61,7 +62,7 @@ export const CartProvider = (props) => {
         return total;
     }
 
-    updateCartWithItem = (item) => {
+    const updateCartWithItem = (item) => {
         dispatch({ type: 'REPLACE_ITEM', payload: item })
     }
 
