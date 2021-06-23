@@ -11,7 +11,7 @@ import{
     Switch
 } from 'react-native-paper';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-import LoginScreen from '../../auth/loginScreen';
+// import LoginScreen from '../../auth/loginScreen';
 
 const DrawerContent = ({navigation})=>{
     return(
@@ -35,7 +35,7 @@ const DrawerContent = ({navigation})=>{
                         <DrawerItem
                             onPress={()=>{
                                
-                                navigation.navigate('MyModal')
+                                navigation.navigate('Login')
                                
                             }}
                             label='Login'

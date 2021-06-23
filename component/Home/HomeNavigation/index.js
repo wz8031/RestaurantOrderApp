@@ -34,6 +34,8 @@ const HomeStackScreen = ({navigation}) =>{
              
             )
         }} />
+        {/* <HomeStack.Screen name='MyModal' component={LoginScreen}  /> */}
+
         <HomeStack.Screen name='itemDetails' component={itemDetails}
             options={()=>({
                 headerRight:()=>(
@@ -48,6 +50,7 @@ const HomeStackScreen = ({navigation}) =>{
             })}
         
         />
+        <HomeStack.Screen name='Login' component={LoginScreen}  />
     </HomeStack.Navigator>
     )
 }
@@ -58,7 +61,7 @@ const HomeNavigator = ()=>{
         //create a Drawer Navigator and pass in the HomeStackNavigator we just created
           <Drawer.Navigator  mode="modal" drawerContent={props => <DrawerContent{...props}/>}>
               <Drawer.Screen name='Home' component={HomeStackScreen} />
-              <Drawer.Screen name='MyModal' component={LoginScreen} />
+              {/* <Drawer.Screen name='MyModal' component={LoginScreen} /> */}
 
           </Drawer.Navigator>
         //   </DrawerContentScrollView>
