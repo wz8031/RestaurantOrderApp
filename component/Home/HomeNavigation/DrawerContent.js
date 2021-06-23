@@ -11,8 +11,9 @@ import{
     Switch
 } from 'react-native-paper';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
+import LoginScreen from '../../auth/loginScreen';
 
-const DrawerContent = (props)=>{
+const DrawerContent = ({navigation})=>{
     return(
         //why it has to be flex 1 to be working????
         <View style={{flex:1}}>
@@ -24,7 +25,7 @@ const DrawerContent = (props)=>{
                             source={require('../../../assets/icon.png')}
                             size={50}
                         />
-                        <View style={{flexDirection:'column', marginLeft:15}}>
+                        <View style={{ flexDirection: 'column', marginLeft: 15 }}>
                             <Title>Ray Zhen</Title>
                             <Caption>@rayzhen</Caption>
                         </View>
@@ -32,7 +33,13 @@ const DrawerContent = (props)=>{
                     </View>
                     <Drawer.Section>
                         <DrawerItem
-                            label='Home'
+                            onPress={()=>{
+                               
+                                navigation.navigate('MyModal')
+                               
+                            }}
+                            label='Login'
+
                         />
                         <DrawerItem
                             label='Point'
@@ -44,7 +51,7 @@ const DrawerContent = (props)=>{
                 </View>
             </DrawerContentScrollView>
             <Drawer.Section>
-                <DrawerItem 
+                <DrawerItem
                     label='sign out'
                 />
             </Drawer.Section>
