@@ -18,7 +18,7 @@ const myFavorite = ({ navigation }) => {
             // if(itemList!=null){
             // 
         } catch (e) {
-            alert('errkor')
+            alert('error')
         }
     }
 
@@ -35,22 +35,20 @@ const myFavorite = ({ navigation }) => {
 
     useEffect(() => {
         getAsynData();
-    });
+    }, []); // component mount
 
     return (
 
         <View>
             <View>
                 <FavoriteItem FavoriteKey={Favorkey} />
-               
-                
-                 {/* <Text>{Favorkey}</Text> */}
-                
+                {/* <Text>{Favorkey}</Text> */}
+
             </View>
             <View>
-            <TouchableOpacity onPress={() => clearAll()} style={styles.button}>
-                <Text style={styles.buttonText}>clear</Text>
-            </TouchableOpacity>
+                <TouchableOpacity onPress={() => clearAll()} style={styles.button}>
+                    <Text style={styles.buttonText}>clear</Text>
+                </TouchableOpacity>
             </View>
 
         </View>
