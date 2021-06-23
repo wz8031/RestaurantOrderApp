@@ -6,6 +6,7 @@ import {createDrawerNavigator, DrawerContentScrollView, DrawerItemList} from '@r
 import { Ionicons } from '@expo/vector-icons';
 import { View, TouchableOpacity} from 'react-native';
 import DrawerContent from './DrawerContent'
+import LoginScreen from '../../auth/loginScreen';
 
 const HomeStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -55,8 +56,10 @@ const HomeNavigator = ()=>{
     return(
         // <DrawerContentScrollView>
         //create a Drawer Navigator and pass in the HomeStackNavigator we just created
-          <Drawer.Navigator drawerContent={props => <DrawerContent{...props}/>}>
+          <Drawer.Navigator  mode="modal" drawerContent={props => <DrawerContent{...props}/>}>
               <Drawer.Screen name='Home' component={HomeStackScreen} />
+              <Drawer.Screen name='MyModal' component={LoginScreen} />
+
           </Drawer.Navigator>
         //   </DrawerContentScrollView>
     )

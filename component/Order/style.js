@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         bottom: 90,
         left: 0,
         right: 0,
-        paddingVertical: 10,
+        paddingVertical: 80,
       
       },
       endPadding: {
